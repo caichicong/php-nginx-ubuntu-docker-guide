@@ -1,7 +1,7 @@
 
 ## nginx配置
 
-```
+
     server {
       listen  80 default_server;
       server_name _;
@@ -23,15 +23,15 @@
        include  fastcgi_params;
       }
     }
-```
+
 
 注意IP 172.17.0.2 与下面的数据库建立命令里的IP对应
 
 ## mysql建立新的用户
 
-CREATE USER 'zhuangxiu'@'172.17.0.2' IDENTIFIED BY 'password';
-
-GRANT ALL PRIVILEGES ON `zhuangxiu`.* TO 'zhuangxiu'@'172.17.0.2' ;
+    CREATE USER 'zhuangxiu'@'172.17.0.2' IDENTIFIED BY 'password';
+    
+    GRANT ALL PRIVILEGES ON `zhuangxiu`.* TO 'zhuangxiu'@'172.17.0.2' ;
 
 ## mysql my.cnf配置修改
 
@@ -42,18 +42,18 @@ GRANT ALL PRIVILEGES ON `zhuangxiu`.* TO 'zhuangxiu'@'172.17.0.2' ;
 
 /docker/www/db.php
 
-```$php
-$dbh = new PDO('mysql:host=172.17.0.1;dbname=zhuangxiu', 'zhuangxiu', 'password');
-$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$dbh->exec('set names utf8');
 
-$rs = $dbh->query("select * from agent_config");
-```
+    $dbh = new PDO('mysql:host=172.17.0.1;dbname=zhuangxiu', 'zhuangxiu', 'password');
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $dbh->exec('set names utf8');
+    
+    $rs = $dbh->query("select * from agent_config");
+
 
 /docker/www/info.php
 
-```$xslt
-<?php phpinfo();?>
-```
+
+    <?php phpinfo();?>
+
 
 
